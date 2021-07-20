@@ -1,11 +1,21 @@
+import { Typography } from "@material-ui/core";
 import React, { useState } from "react";
-import DadosPessoais from "../DadosPessoais";
+import DadosEntrega from "../DadosEntrega";
+import DadosPessoais from "./DadosPessoais";
+import DadosUsuario from "./DadosUsuario";
 
-function FormularioCadastro({aoEnviar, validarCPF}) {
+function FormularioCadastro({ aoEnviar, validarCPF }) {
+  const [etapaAtual, setEtapaAtual] = useState(0);
+  const formularios = [
+    <DadosUsuario aoEnviar={proximo} />,
+    <DadosPessoais aoEnviar={proximo} validarCPF={validarCPF} />,
+    <DadosEntrega aoEnviar={aoEnviar} />,
+  ];
 
+  function proximo() {
+    setEtapaAtual(etapaAtual + 1);
+  }
 
-  return (
-    <DadosPessoais/>
-   );
+  return <>{formularios[etapaAtual]}</>;
 }
 export default FormularioCadastro;
