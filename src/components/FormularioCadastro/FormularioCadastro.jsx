@@ -14,9 +14,9 @@ function FormularioCadastro({ aoEnviar}) {
     }
   });
   const formularios = [
-    <DadosUsuario aoEnviar={coletarDados}/>,
-    <DadosPessoais aoEnviar={coletarDados}/>,
-    <DadosEntrega aoEnviar={coletarDados} />,
+    <DadosUsuario aoEnviar={coletarDados} dados={dadosColetados}/>,
+    <DadosPessoais aoEnviar={coletarDados} voltar={anterior} dados={dadosColetados}/>,
+    <DadosEntrega aoEnviar={coletarDados} voltar={anterior} dados={dadosColetados}/>,
     <Typography variant="h5">Obrigado pelo Cadastro</Typography>,
   ];
 
@@ -27,6 +27,10 @@ function FormularioCadastro({ aoEnviar}) {
 
   function proximo() {
     setEtapaAtual(etapaAtual + 1);
+  }
+
+  function anterior() {
+    setEtapaAtual(etapaAtual - 1);
   }
 
   return (

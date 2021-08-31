@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { TextField, Button } from "@material-ui/core";
 
-function DadosEntrega({aoEnviar}) {
+function DadosEntrega({aoEnviar, dados, voltar}) {
   const [cep, setCep] = useState("");
   const [endereco, setEndereco] = useState("");
   const [numero, setNumero] = useState("");
@@ -75,6 +75,9 @@ function DadosEntrega({aoEnviar}) {
         variant="outlined"
         margin="normal"
       />
+      <Button variant="contained" color="primary" onClick={voltar}>
+        Anterior
+      </Button>
       <Button type="submit" variant="contained" color="primary" fullWidth>
         Finalizar Cadastro
       </Button>

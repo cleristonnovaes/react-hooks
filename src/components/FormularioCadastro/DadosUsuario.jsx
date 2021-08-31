@@ -3,9 +3,9 @@ import { TextField, Button } from "@material-ui/core";
 import ValidacoesCadastro from "../../context/ValidacoesCadastro";
 import useErros from "../../hooks/useErros";
 
-function DadosUsuario({ aoEnviar }) {
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+function DadosUsuario({ aoEnviar, dados }) {
+  const [email, setEmail] = useState(dados.email);
+  const [senha, setSenha] = useState(dados.senha);
   const validacoes = useContext(ValidacoesCadastro);
   const [erros, validarCampos, possoEnviar] = useErros(validacoes);
 

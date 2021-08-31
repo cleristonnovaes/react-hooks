@@ -8,10 +8,10 @@ import {
 import ValidacoesCadastro from "../../context/ValidacoesCadastro";
 import useErros from "../../hooks/useErros";
 
-function DadosPessoais({ aoEnviar }) {
-  const [nome, setNome] = useState("");
-  const [sobrenome, setSobrenome] = useState("");
-  const [cpf, setCpf] = useState("");
+function DadosPessoais({ aoEnviar, dados, voltar }) {
+  const [nome, setNome] = useState(dados.nome);
+  const [sobrenome, setSobrenome] = useState(dados.sobrenome);
+  const [cpf, setCpf] = useState(dados.cpf);
   const [promocoes, setPromocoes] = useState(true);
   const [novidades, setNovidades] = useState(true);
   const validacoes = useContext(ValidacoesCadastro);
@@ -96,7 +96,9 @@ function DadosPessoais({ aoEnviar }) {
           />
         }
       />
-
+      <Button variant="contained" color="primary" onClick={voltar}>
+        Anterior
+      </Button>
       <Button type="submit" variant="contained" color="primary">
         Próxima
       </Button>
